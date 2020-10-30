@@ -28,40 +28,18 @@ const noticias = [
 ];
 
 */
-function initDatabase() {
-var firebaseConfig = {
-    apiKey: "AIzaSyCfoLHOoi8t_gjhFcDDBIjadtxqF3NuHQQ",
-    authDomain: "el-formu.firebaseapp.com",
-    databaseURL: "https://el-formu.firebaseio.com",
-    projectId: "el-formu",
-    storageBucket: "el-formu.appspot.com",
-    messagingSenderId: "40809937070",
-    appId: "1:40809937070:web:63d6636fd38bd5df9cd53f"
-  };
+// base de datos por defecto
+let defaultDatabase = firebase.database();
+// ruta a la base de datos
+let noticias = firebase.database().ref("");
 
- firebase.initializeApp(firebaseConfig);
-}
+noticias.on('value', function(snapshot) {
+  let messages = snapshot.val();
 
-function getMessages() {
-    let database = firebase.database();
-    let noticiasRef = database.ref('noticias');
-  
-    // READ operation
-    noticiasRef.on('value', function(snapshot) {
-      let noticias = snapshot.val();
-  
-      console.log(noticias);
-  
-      noticias.map(function(messageObject) {
-        writeMessage(messageObject.text);
-      });
-    })
-};
-  
-  
-  initDatabase();
-  getMessages();
-  
+  console.log(messages);
+});
+ 
+initDatabase();
 
 
 for ( let i = 0; i < noticias.length; i++){
