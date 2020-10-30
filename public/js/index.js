@@ -31,31 +31,36 @@ const noticias = [
 // base de datos por defecto
 let defaultDatabase = firebase.database();
 // ruta a la base de datos
-let noticias = firebase.database().ref("");
+let noticiasRef = defaultDatabase.ref("noticias");
 
-noticias.on('value', function(snapshot) {
+noticiasRef.on('value', function(snapshot) {
   let messages = snapshot.val();
-
   console.log(messages);
+  const noticias = messages;
+
+  for ( let i = 0; i < noticias.length; i++){
+
+    let caja = document.createElement("div");
+    caja.className = "titudescri";
+    document.querySelector("body").appendChild(caja);
+    
+    let titulo = document.createElement("h1");
+    caja.appendChild(titulo);
+    titulo.innerText = noticias[i].titulo;
+    
+    
+    let descripcion = document.createElement("h2");
+    caja.appendChild(descripcion);
+    //document.querySelector(".titudescri").appendChild(descripcion);
+    descripcion.innerText = noticias[i].descripcion;
+    
+    }
+
+
+
 });
  
-initDatabase();
 
 
-for ( let i = 0; i < noticias.length; i++){
-
-let caja = document.createElement("div");
-caja.className = "titudescri";
-document.querySelector("body").appendChild(caja);
-
-let titulo = document.createElement("h1");
-caja.appendChild(titulo);
-titulo.innerText = noticias[i].titulo;
 
 
-let descripcion = document.createElement("h2");
-caja.appendChild(descripcion);
-//document.querySelector(".titudescri").appendChild(descripcion);
-descripcion.innerText = noticias[i].descripcion;
-
-}
