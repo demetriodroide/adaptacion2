@@ -34,10 +34,8 @@ let defaultDatabase = firebase.database();
 let noticiasRef = defaultDatabase.ref("noticias");
 
 noticiasRef.on('value', function(snapshot) {
-  let messages = snapshot.val();
-  console.log(messages);
-  const noticias = messages;
-
+  let noticias = Object.values( snapshot.val() );
+  
   for ( let i = 0; i < noticias.length; i++){
 
     let caja = document.createElement("div");
@@ -55,8 +53,6 @@ noticiasRef.on('value', function(snapshot) {
     descripcion.innerText = noticias[i].descripcion;
     
     }
-
-
 
 });
  

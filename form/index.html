@@ -6,17 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-<form id="formu">
-    <label for="titulolabel">titulo</label>
+
+    <label for="titulolabel">titulo</label><br>
     <input type="text" id="titulolabel">
-    
-    <label for="titulotexto">texto</label>
-    <input type="text" id="titulotexto">
+    <br><br>
+    <label for="titulotexto">texto</label><br>
+    <textarea type="text" id="titulotexto"></textarea>
 
-    <input type="submit" id="pulsar" value="enviar">
-</form>
+    <button id="pulsar">enviar</button>
 
-<p id="dejaloaqui"></p>
-    <script src="/form/main.js"></script>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCfoLHOoi8t_gjhFcDDBIjadtxqF3NuHQQ",
+    authDomain: "el-formu.firebaseapp.com",
+    databaseURL: "https://el-formu.firebaseio.com",
+    projectId: "el-formu",
+    storageBucket: "el-formu.appspot.com",
+    messagingSenderId: "40809937070",
+    appId: "1:40809937070:web:63d6636fd38bd5df9cd53f"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+    <script src="main.js"></script>
 </body>
 </html>
